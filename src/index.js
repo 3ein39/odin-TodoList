@@ -59,6 +59,8 @@ class Application {
 
 class UIManager {
     projectList = document.querySelector("#project-list");
+    todoList = document.querySelector("#todo-list");
+    todoForm = document.querySelector("#add-todo-form");
     constructor(application) {
         this.application = application;
 
@@ -86,11 +88,50 @@ class UIManager {
     }
 
     handleUserInput() {
-        // Implement event handlers for user actions (e.g., button clicks, form submissions)
-        // Update the application data and call UIManager methods to update the UI
+        let addTodoButton = document.querySelector("#add-todo-button");
+        addTodoButton.addEventListener("click", () => {
+            // show form
+            this.todoForm.style.display = "block";
+        });
+
+        this.todoForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // add todo to todo list
+            const title = document.querySelector("#todo-title").value;
+            const description = document.querySelector("#todo-description").value;
+            const dueDate = document.querySelector("#todo-due-date").value;
+            const priority = document.querySelector("#todo-priority").value;
+            const notes = document.querySelector("#todo-notes").value;
+            const completed = false;
+            const todo = new Todo(
+                title,
+                description,
+                dueDate,
+                priority,
+                notes,
+                completed
+            );
+            this.application.addTodoToActiveProject(todo);
+            this.displayTodos(this.application.activeProject);
+            this.todoForm.style.display = "none";
+
+            // append todo to todo list
+            // hide form
+            let todoP = document.createElement("p");
+            todoP.textContent = `
+                Title: ${title}\n
+                Description: ${description}\n
+                Due Date: ${dueDate}\n
+                Priority: ${priority}\n
+                Notes: ${notes}\n
+            `;
+            this.todoList.appendChild(todoP);
+        })
     }
-    // Other DOM-related methods
 }
+
 
 const app = new Application();
 const uiManager = new UIManager(app);
+uiManager.handleUserInput();
