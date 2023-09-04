@@ -62,11 +62,11 @@ class UIManager {
     }
 
     displayProjects() {
-        // Implement logic to render projects in the DOM
+        console.log(this.application.projects);
     }
 
     displayTodos(project) {
-        // Implement logic to render todos for a project in the DOM
+        console.log(project.todos);
     }
 
     handleUserInput() {
@@ -99,4 +99,19 @@ let todo2 = new Todo(
 app.addTodoToActiveProject(todo1);
 app.addTodoToActiveProject(todo2);
 
-console.log(app.projects);
+let project1 = app.createProject("Project 1");
+
+project1.addTodo(
+    new Todo(
+        "Title 3",
+        "Description 3",
+        "Due Date 3",
+        "Priority 3",
+        "Notes 3",
+        false
+    )
+);
+app.setActiveProject(project1);
+
+uiManager.displayProjects();
+uiManager.displayTodos(app.activeProject);
