@@ -8,48 +8,64 @@ body, h1, h2, ul, li, form, button {
 
 /* Set a background color and font for the body */
 body {
-    background-color: #f0f0f0;
+    background-color: #202124; /* Dark background similar to Todoist */
     font-family: Arial, sans-serif;
 }
 
-/* Style the header */
-header {
-    background-color: #333;
+/* Container for the sidebar and main content */
+.container {
+    display: flex;
+    align-items: stretch; /* Adjust this for sidebar height */
+}
+
+/* Sidebar (Projects) */
+#projects {
+    background-color: #303337; /* Dark sidebar background */
     color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-}
-
-/* Style the main content area */
-main {
-    max-width: 800px;
-    margin: 0 auto;
     padding: 1rem;
+    width: 250px; /* Adjust the width as needed */
+    min-height: 100vh; /* Ensure the sidebar covers the entire height */
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the project and todo sections */
-section {
-    margin-bottom: 2rem;
-}
-
-/* Style project and todo section headers */
-h2 {
-    color: #333;
+#project-list {
+    list-style: none;
     margin-bottom: 1rem;
 }
 
-/* Style lists */
-ul {
-    list-style: none;
+#project-list li {
+    margin-bottom: 0.5rem;
+}
+
+#add-project-button {
+    background-color: #474a4d; /* Dark button background similar to Todoist */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-project-button:hover {
+    background-color: #5b5f63; /* Hover color similar to Todoist */
+}
+
+/* Main Content (Todo List) */
+#todos {
+    flex-grow: 1;
+    padding: 1rem;
+    background-color: #fff; /* White background for todo list area */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Style todo items */
 .todo {
-    background-color: #fff;
+    background-color: #f4f4f4; /* Light gray background for todos */
     border: 1px solid #ddd;
     padding: 1rem;
     margin-bottom: 1rem;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333; /* Text color for todos */
 }
 
 /* Style form inputs and buttons */
@@ -68,7 +84,7 @@ button {
 
 /* Style the "Add Project" and "Add Todo" buttons */
 button {
-    background-color: #333;
+    background-color: #474a4d; /* Dark button background similar to Todoist */
     color: #fff;
     border: none;
     cursor: pointer;
@@ -76,5 +92,5 @@ button {
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #5b5f63; /* Hover color similar to Todoist */
 }

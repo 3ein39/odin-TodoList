@@ -1,3 +1,4 @@
+import "./styles.css";
 // has title, description, dueDate, priority, notes, completed;
 class Todo {
     constructor(title, description, dueDate, priority, notes, completed) {
