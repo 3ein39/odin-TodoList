@@ -85,7 +85,18 @@ class UIManager {
     }
 
     displayTodos(project) {
-        console.log(project.todos);
+        this.todoList.innerHTML = "";
+        project.todos.forEach(todo => {
+            let todoP = document.createElement("p");
+            todoP.textContent = `
+                Title: ${todo.title}\n
+                Description: ${todo.description}\n
+                Due Date: ${todo.dueDate}\n
+                Priority: ${todo.priority}\n
+                Notes: ${todo.notes}\n
+            `;
+            this.todoList.appendChild(todoP);
+        });
     }
 
     handleUserInput() {
@@ -140,15 +151,6 @@ class UIManager {
             this.displayTodos(this.application.activeProject);
             this.todoForm.style.display = "none";
 
-            let todoP = document.createElement("p");
-            todoP.textContent = `
-                Title: ${title}\n
-                Description: ${description}\n
-                Due Date: ${dueDate}\n
-                Priority: ${priority}\n
-                Notes: ${notes}\n
-            `;
-            this.todoList.appendChild(todoP);
         })
     }
 }
