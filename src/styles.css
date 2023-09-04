@@ -106,3 +106,34 @@ h2 {
     margin: 8px;
 
 }
+
+#add-project-form {
+    background-color: #303337; /* Dark background color */
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem; /* Add some spacing between the "Add Todo" button and the form */
+}
+
+/* Style the text input and button inside the form */
+#add-project-form input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#add-project-form button {
+    background-color: #474a4d; /* Dark button background similar to Todoist */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-project-form button:hover {
+    background-color: #5b5f63; /* Hover color similar to Todoist */
+}

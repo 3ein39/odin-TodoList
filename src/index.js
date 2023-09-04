@@ -61,6 +61,7 @@ class UIManager {
     projectList = document.querySelector("#project-list");
     todoList = document.querySelector("#todo-list");
     todoForm = document.querySelector("#add-todo-form");
+    projectForm = document.querySelector("#add-project-form");
     constructor(application) {
         this.application = application;
 
@@ -88,10 +89,33 @@ class UIManager {
     }
 
     handleUserInput() {
+        let addProjectButton = document.querySelector("#add-project-button");
+        addProjectButton.addEventListener("click", () => {
+            this.projectForm.style.display = "block";
+        });
+
         let addTodoButton = document.querySelector("#add-todo-button");
         addTodoButton.addEventListener("click", () => {
             // show form
             this.todoForm.style.display = "block";
+        });
+
+        this.projectForm.addEventListener("submit", (e) => {
+           // prevent default
+              e.preventDefault();
+            // add project to project list
+            const projectName = document.querySelector("#project-name").value;
+            const project = this.application.createProject(projectName);
+            const projectListItem = document.createElement("li");
+            projectListItem.textContent = project.name;
+            projectListItem.addEventListener("click", () => {
+                this.application.setActiveProject(project);
+                this.displayTodos(project);
+            }
+            );
+            this.projectList.appendChild(projectListItem);
+            this.projectForm.style.display = "none";
+
         });
 
         this.todoForm.addEventListener("submit", (e) => {
@@ -116,8 +140,6 @@ class UIManager {
             this.displayTodos(this.application.activeProject);
             this.todoForm.style.display = "none";
 
-            // append todo to todo list
-            // hide form
             let todoP = document.createElement("p");
             todoP.textContent = `
                 Title: ${title}\n
