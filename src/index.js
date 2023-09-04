@@ -58,12 +58,27 @@ class Application {
 }
 
 class UIManager {
+    projectList = document.querySelector("#project-list");
     constructor(application) {
         this.application = application;
+
+
+
+        this.displayProjects();
+        this.displayTodos(this.application.activeProject);
     }
 
     displayProjects() {
-        console.log(this.application.projects);
+        console.log(this);
+        this.application.projects.forEach(project => {
+            const projectListItem = document.createElement("li");
+            projectListItem.textContent = project.name;
+            projectListItem.addEventListener("click", () => {
+                this.application.setActiveProject(project);
+                this.displayTodos(project);
+            });
+            this.projectList.appendChild(projectListItem);
+        });
     }
 
     displayTodos(project) {
@@ -79,40 +94,3 @@ class UIManager {
 
 const app = new Application();
 const uiManager = new UIManager(app);
-
-let todo1 = new Todo(
-    "Title 1",
-    "Description 1",
-    "Due Date 1",
-    "Priority 1",
-    "Notes 1",
-    false
-);
-let todo2 = new Todo(
-    "Title 2",
-    "Description 2",
-    "Due Date 2",
-    "Priority 2",
-    "Notes 2",
-    false
-);
-
-app.addTodoToActiveProject(todo1);
-app.addTodoToActiveProject(todo2);
-
-let project1 = app.createProject("Project 1");
-
-project1.addTodo(
-    new Todo(
-        "Title 3",
-        "Description 3",
-        "Due Date 3",
-        "Priority 3",
-        "Notes 3",
-        false
-    )
-);
-app.setActiveProject(project1);
-
-uiManager.displayProjects();
-uiManager.displayTodos(app.activeProject);

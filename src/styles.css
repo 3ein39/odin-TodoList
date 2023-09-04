@@ -1,7 +1,7 @@
 /* styles.css */
 
 /* Reset some default browser styles */
-body, h1, h2, ul, li, form, button {
+body {
     margin: 0;
     padding: 0;
 }
@@ -34,7 +34,14 @@ body {
 }
 
 #project-list li {
-    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+/* Style on hover */
+#project-list li:hover {
+    background-color: #555; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
 }
 
 #add-project-button {
@@ -93,4 +100,9 @@ button {
 
 button:hover {
     background-color: #5b5f63; /* Hover color similar to Todoist */
+}
+
+h2 {
+    margin: 8px;
+
 }
