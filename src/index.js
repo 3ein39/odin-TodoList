@@ -36,7 +36,7 @@ class Project {
 class Application {
     constructor() {
         this.projects = [];
-        this.activeProject = null;
+        this.activeProject = "Project 1";
     }
 
     createProject(name) {
@@ -75,3 +75,7 @@ class UIManager {
     }
     // Other DOM-related methods
 }
+
+const app = new Application();
+const uiManager = new UIManager(app);
+
