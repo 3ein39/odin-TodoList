@@ -36,7 +36,7 @@ class Project {
 class Application {
     constructor() {
         this.projects = [];
-        this.activeProject = "Project 1";
+        this.activeProject = this.createProject("Default Project");
     }
 
     createProject(name) {
@@ -79,3 +79,24 @@ class UIManager {
 const app = new Application();
 const uiManager = new UIManager(app);
 
+let todo1 = new Todo(
+    "Title 1",
+    "Description 1",
+    "Due Date 1",
+    "Priority 1",
+    "Notes 1",
+    false
+);
+let todo2 = new Todo(
+    "Title 2",
+    "Description 2",
+    "Due Date 2",
+    "Priority 2",
+    "Notes 2",
+    false
+);
+
+app.addTodoToActiveProject(todo1);
+app.addTodoToActiveProject(todo2);
+
+console.log(app.projects);
