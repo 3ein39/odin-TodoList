@@ -37,24 +37,63 @@ class Project {
 class Application {
     constructor() {
         this.projects = [];
-        this.activeProject = this.createProject("Default Project");
+        this.activeProject = null;
+        if (!this.loadProjects()){
+            this.activeProject = this.createProject("Default Project");
+        } else {
+            this.activeProject = this.projects[0];
+        }
     }
 
     createProject(name) {
         const project = new Project(name);
         this.projects.push(project);
+        this.saveProjects();
         return project;
     }
 
     setActiveProject(project) {
         this.activeProject = project;
+        this.saveProjects();
     }
 
     addTodoToActiveProject(todo) {
         if (this.activeProject) {
             this.activeProject.addTodo(todo);
+            this.saveProjects();
         }
     }
+
+    // Load projects and todos from LocalStorage
+    loadProjects() {
+        const savedProjects = JSON.parse(localStorage.getItem("projects"));
+        console.log(localStorage.getItem("projects"));
+        if (savedProjects) {
+            this.projects = savedProjects.map(projectData => {
+                const project = new Project(projectData.name);
+                project.todos = projectData.todos.map(todoData => {
+                    return new Todo(
+                        todoData.title,
+                        todoData.description,
+                        todoData.dueDate,
+                        todoData.priority,
+                        todoData.notes,
+                        todoData.completed
+                    );
+                });
+                return project;
+            });
+            // console.log(this.projects);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    saveProjects() {
+        localStorage.setItem("projects", JSON.stringify(this.projects));
+    }
+
 }
 
 class UIManager {
@@ -65,14 +104,11 @@ class UIManager {
     constructor(application) {
         this.application = application;
 
-
-
         this.displayProjects();
         this.displayTodos(this.application.activeProject);
     }
 
     displayProjects() {
-        console.log(this);
         this.application.projects.forEach(project => {
             const projectListItem = document.createElement("li");
             projectListItem.textContent = project.name;
@@ -127,6 +163,9 @@ class UIManager {
             this.projectList.appendChild(projectListItem);
             this.projectForm.style.display = "none";
 
+            // add to local storage
+            this.application.saveProjects();
+            console.log(localStorage.getItem("projects"));
         });
 
         this.todoForm.addEventListener("submit", (e) => {
@@ -151,6 +190,7 @@ class UIManager {
             this.displayTodos(this.application.activeProject);
             this.todoForm.style.display = "none";
 
+            this.application.saveProjects();
         })
     }
 }
