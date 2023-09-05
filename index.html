@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List App</title>
+</head>
+<body>
+
+<div class="container">
+    <section id="projects">
+        <!-- Project List -->
+        <h2>Projects</h2>
+        <ul id="project-list">
+            <!-- Project items will be added here dynamically -->
+        </ul>
+        <button id="add-project-button">Add Project</button>
+        <form id="add-project-form" style="display: none;">
+            <input type="text" id="project-name" placeholder="Enter project name" required>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section id="todos">
+        <!-- Todo List -->
+        <h2>Todo List</h2>
+        <div id="todo-list">
+            <!-- Todo items will be added here dynamically -->
+        </div>
+        <button id="add-todo-button">Add Todo</button>
+        <form id="add-todo-form" style="display: none;">
+            <input type="text" id="todo-title" placeholder="Enter task title" required>
+            <input type="text" id="todo-description" placeholder="Enter task description">
+            <input type="date" id="todo-due-date" required>
+            <select id="todo-priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <input type="text" id="todo-notes" placeholder="Enter notes">
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</div>
+<script src="bundle.js"></script>
+</body>
+</html>
