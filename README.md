@@ -2,7 +2,8 @@
 
 A simple web-based todo list application to help you organize your tasks and projects.
 
-![Screenshot](screenshots/todo-app-screenshot.png)
+![Screenshot](https://github.com/3ein39/odin-TodoList/assets/37001450/dbef5e82-615a-49b0-bee1-9e0ef6a548b4)
+
 
 ## Table of Contents
 
