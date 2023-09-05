@@ -13,8 +13,7 @@ A simple web-based todo list application to help you organize your tasks and pro
   - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 
