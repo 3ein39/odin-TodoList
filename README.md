@@ -11,7 +11,6 @@ A simple web-based todo list application to help you organize your tasks and pro
 - [Demo](#demo)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
@@ -38,26 +37,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 - [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine.
 - [Git](https://git-scm.com/) for version control.
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/todo-list-app.git
-   
-2. Navigate to the project directory:
-    ```bash
-    cd todo-list-app
-3. Build the project
-    ```bash
-    npm run build
-4. Start the development server
-    ```bash
-    npm start
-5. Open your web browser and access the application at http://localhost:8080 (or the specified port).
-
-Now, you have the Todo List Web Application up and running on your local machine for development and testing purposes.
-
+- [Webpack](https://webpack.js.org/) for bundling.
 ## Documentation
 For detailed documentation on the project, including class design, setup instructions, and more, please refer to the [Wiki](https://github.com/3ein39/odin-TodoList/wiki).
